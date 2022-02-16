@@ -1,0 +1,22 @@
+query Posts {
+  posts(orderBy: updatedAt_DESC) {
+    title
+    slug
+    excerpt
+    publishedAt
+    coverImage {
+      url(transformation: { image: { resize: { width: 400 } } })
+    }
+    author {
+      name
+      id
+      picture {
+        url(
+          transformation: {
+            image: { resize: { fit: crop, height: 40, width: 40 } }
+          }
+        )
+      }
+    }
+  }
+}
